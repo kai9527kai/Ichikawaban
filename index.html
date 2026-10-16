@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>一番賞</title>
+<!-- iPhone「加入主畫面」用的圖示與名稱 -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.png">
+<meta name="apple-mobile-web-app-title" content="一番賞">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#fde6e8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Huninn","Noto Sans TC",sans-serif;color:#4b3b36;min-height:100vh;display:grid;place-items:center;padding:24px;text-align:center;
+    background:#fffaf1;background-image:radial-gradient(#f3e6d3 1.2px,transparent 1.3px);background-size:18px 18px}
+  .card{max-width:340px;background:#fff;border:2px solid #4b3b36;border-radius:22px 28px 20px 26px;box-shadow:3px 4px 0 #4b3b36;padding:22px 18px}
+  img{width:96px;height:96px;image-rendering:pixelated;border-radius:22px;border:2px solid #4b3b36;display:block;margin:0 auto 12px}
+  h1{font-size:24px;font-weight:400;margin-bottom:6px}
+  p{font-size:14px;color:#8a7a72;line-height:1.7}
+  ol{text-align:left;font-size:15px;line-height:1.9;margin:12px 0 16px 1.4em}
+  a.btn{display:inline-block;font-size:16px;padding:9px 22px;border:2px solid #4b3b36;border-radius:999px;background:#f8e3a1;color:#4b3b36;text-decoration:none;box-shadow:2px 3px 0 #4b3b36}
+  .go{display:none}
+  .standalone .go{display:block}.standalone .howto{display:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <img src="apple-touch-icon.png" alt="">
+  <h1>一番賞</h1>
+  <div class="go"><p>打開寶箱中⋯</p></div>
+  <div class="howto">
+    <p>把這一頁加到 iPhone 主畫面，之後點烏薩奇就能直接進去：</p>
+    <ol>
+      <li>按 Safari 下方的「分享」按鈕</li>
+      <li>選「加入主畫面」</li>
+      <li>按右上角「新增」</li>
+    </ol>
+    <a class="btn" id="open" href="#">直接打開一番賞</a>
+  </div>
+</div>
+<script>
+  // 把這裡換成 Apps Script 部署後的 /exec 網址
+  const APP_URL = 'https://script.google.com/macros/s/AKfycbzK2EeV8M-H0fPMq4444tG_IrzQZ2CrgKU116NavzEqMBPhHBbhPExJqdUnTuqiBPSn/exec';
+
+  document.getElementById('open').href = APP_URL;
+  // 從主畫面打開時（全螢幕模式）直接跳到一番賞；在 Safari 裡打開時先顯示加入主畫面的說明
+  if (window.navigator.standalone || matchMedia('(display-mode: standalone)').matches) {
+    document.body.classList.add('standalone');
+    location.replace(APP_URL);
+  }
+</script>
+</body>
+</html>
